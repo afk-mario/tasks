@@ -1,0 +1,27 @@
+.tasks {
+  display: block;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.side-static {
+  width: var(--sidebar-width);
+  min-width: var(--sidebar-min-width);
+  height: 100%;
+}
+
+.side-static .list {
+  width: 100%;
+  overflow-y: auto;
+  height: calc(100% - var(--actions-height));
+}
+
+.child {
+  width: auto;
+  height: 100%;
+  border-left: 2px solid var(--medium-gray);
+  overflow-y: auto;
+  flex: 1 0 auto;
+}

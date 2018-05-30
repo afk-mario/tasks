@@ -1,0 +1,31 @@
+.export {
+  width: 60px;
+  height: 100%;
+  border-left: 2px solid var(--medium-gray);
+  border-bottom: 2px solid var(--medium-gray);
+  background: transparent;
+  color: var(--light-gray);
+  margin: 0;
+  font-size: 1.2em;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  text-shadow: none;
+  cursor: pointer;
+}
+
+.export:not(:firs-child) {
+  border-top: none;
+}
+
+.export:hover {
+  color: var(--light-blue);
+  border-left-color: var(--light-blue);
+  box-shadow: var(--box-shadow-2);
+}
