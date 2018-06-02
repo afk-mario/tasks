@@ -16,7 +16,7 @@
   display: inline-block;
   text-align: left;
   font-family: var(--font-title);
-  font-size: 1.2em;
+  font-size: 1em;
   letter-spacing: 0.1em;
   color: var(--medium-gray);
   text-decoration: none;
@@ -33,4 +33,27 @@
 .actions li:hover {
   color: var(--black);
   border-color: var(--black);
+}
+
+@media screen and (max-width: 40em) {
+  .actions {
+    border: 2px solid var(--medium-gray);
+    height: auto;
+  }
+
+  .actions li {
+    border: none;
+    padding: 5px;
+    flex: 1 0 auto;
+    height: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .actions li:not(:last-child) {
+    margin: 0;
+    border-right: 2px solid var(--medium-gray);
+  }
 }
