@@ -7,7 +7,7 @@ import { routerMiddleware } from 'react-router-redux';
 import createBrowserHistory from 'history/createBrowserHistory';
 
 import thunk from 'redux-thunk';
-import { throttle } from 'lodash';
+import throttle from 'lodash.throttle';
 
 import AppReducer from './reducers';
 import App from './containers/app';
@@ -23,7 +23,7 @@ const persistedState = loadState();
 const store = createStore(
   AppReducer,
   persistedState,
-  composeWithDevTools(applyMiddleware(...middleware))
+  composeWithDevTools(applyMiddleware(...middleware)),
 );
 
 store.subscribe(
@@ -33,14 +33,14 @@ store.subscribe(
       tasks,
       settings,
     });
-  }, 1000)
+  }, 1000),
 );
 
 render(
   <Provider store={store}>
     <App history={history} />
   </Provider>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 
 registerServiceWorker();

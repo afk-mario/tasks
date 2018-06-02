@@ -4,7 +4,7 @@ import { DragSource, DropTarget } from 'react-dnd';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { flow } from 'lodash';
+import flow from 'lodash.flow';
 
 import './style.css';
 
@@ -105,8 +105,8 @@ class ReordableRow extends React.Component {
             {text}
           </span>
           {children}
-        </li>
-      )
+        </li>,
+      ),
     );
   }
 }
@@ -123,5 +123,5 @@ ReordableRow.propTypes = {
 
 export default flow(
   DragSource('ROW', rowSource, collect),
-  DropTarget('ROW', rowTarget, idk)
+  DropTarget('ROW', rowTarget, idk),
 )(ReordableRow);
