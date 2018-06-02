@@ -53,7 +53,7 @@ class Form extends React.Component {
 
     const state = Object.assign(
       {},
-      ...spec.map(({ name, value }) => ({ [name]: value }))
+      ...spec.map(({ name, value }) => ({ [name]: value })),
     );
 
     this.setState(
@@ -62,7 +62,7 @@ class Form extends React.Component {
       },
       () => {
         // this.props.history.push('/tasks/');
-      }
+      },
     );
   }
 
@@ -93,9 +93,10 @@ class Form extends React.Component {
                 value={this.state[item.name]}
                 onChange={this.handleInputChange}
               />
-            )
+            ),
         )}
 
+        <label>Duration</label>
         <Select
           className="custom-select"
           classNamePrefix="custom-select"

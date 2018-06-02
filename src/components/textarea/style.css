@@ -1,6 +1,7 @@
 textarea {
   width: 100%;
   height: auto;
+  font-family: var(--font);
   padding: var(--half-margin) 0 2px 0;
   font-size: 1.2em;
   background: transparent;
@@ -12,7 +13,6 @@ textarea {
   color: var(--medium-gray);
 }
 
-
-textarea:focus{
+textarea:focus {
   color: var(--black);
 }

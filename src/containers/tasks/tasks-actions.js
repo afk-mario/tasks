@@ -1,8 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
+
+import { GenRandomTask } from '../../lib/random-tasks';
 import Actions from '../../components/actions';
 import { withRouter } from 'react-router';
-import { clearTasks } from './actions';
+import { clearTasks, addTask } from './actions';
 
 function mapStateToProps(state) {
   const { tasks } = state;
@@ -12,19 +14,19 @@ function mapStateToProps(state) {
 const TaskActions = ({ items, dispatch, history }) => {
   const tasks = [
     {
-      name: 'Create',
+      name: 'New task',
       onClick: () => {
         history.push('/tasks/add');
       },
     },
     {
-      name: 'Load',
+      name: 'Gen Random',
       onClick: () => {
-        history.push('/tasks/load');
+        for (let i = 0; i < 50; i++) dispatch(addTask(GenRandomTask()));
       },
     },
     {
-      name: 'Clear',
+      name: 'Clear tasks',
       onClick: () => {
         dispatch(clearTasks());
       },

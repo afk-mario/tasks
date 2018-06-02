@@ -1,8 +1,3 @@
-.container.load {
-  width: 80%;
-  padding: var(--margin) var(--margin) var(--margin) var(--margin);
-}
-
 .load {
   width: 100%;
   font-family: var(--font-title);
@@ -11,7 +6,7 @@
   color: var(--medium-gray);
   cursor: pointer;
   text-transform: uppercase;
-  margin: auto;
+  margin: var(--margin) auto;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;

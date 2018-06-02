@@ -102,8 +102,8 @@ html {
 }
 
 .page-child {
-  /* height: calc(100vh - var(--header-height) - var(--footer-height)); */
-  padding: var(--margin) 0 0 0;
+  min-height: calc(95vh - var(--margin) - var(--double-margin));
+  padding: var(--margin) 0 var(--double-margin) 0;
   color: var(--light-gray);
   position: relative;
 }
@@ -121,4 +121,19 @@ h1 {
 
 h2 {
   color: var(--green);
+}
+
+@media screen and (max-width: 40em) {
+  body {
+    font-size: 0.8em;
+  }
+
+  .page-child {
+    min-height: none;
+    padding: var(--half-margin) 0 0 0;
+  }
+
+  .wrapper {
+    width: 90%;
+  }
 }

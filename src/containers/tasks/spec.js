@@ -31,19 +31,19 @@ const spec = [
     options: [
       {
         value: '00:30',
-        label: 'corta',
+        label: 'short - 00:30',
       },
       {
         value: '00:45',
-        label: 'media',
+        label: 'medium - 00:45',
       },
       {
         value: '01:00',
-        label: 'larga',
+        label: 'long - 01:00',
       },
       {
         value: '00:00',
-        label: 'otra',
+        label: 'custom duration',
       },
     ],
   },

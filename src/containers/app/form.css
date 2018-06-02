@@ -1,7 +1,7 @@
-form {
+form.wrapper {
   display: flex;
   padding: var(--margin);
-  margin: var(--margin) auto auto auto;
+  margin: auto auto auto auto;
   flex-flow: column nowrap;
   border: 2px solid var(--black);
 }
@@ -48,7 +48,7 @@ form > *:not(:first-child) {
 label {
   margin: 0 0 var(--half-margin) 0;
   display: block;
-  color: var(--medium-gray);
+  color: var(--black);
   font-family: var(--font-title);
   font-size: 1.5em;
   letter-spacing: 0.05em;
@@ -108,4 +108,11 @@ input[type='checkbox']:checked + label i {
 .custom-select input,
 .custom-select span {
   color: var(--medium-gray);
+}
+
+@media screen and (max-width: 40em) {
+  form.wrapper {
+    padding: var(--half-margin);
+    margin: var(--half-margin) auto auto auto;
+  }
 }

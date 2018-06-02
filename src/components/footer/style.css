@@ -15,3 +15,9 @@
   text-align: center;
   margin-bottom: var(--margin);
 }
+
+@media screen and (max-width: 40em) {
+  .version-number {
+    font-size: 1.5em;
+  }
+}

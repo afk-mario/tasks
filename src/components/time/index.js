@@ -59,27 +59,18 @@ class Time extends React.Component {
             value: this.getStringValue(),
           },
         });
-      }
+      },
     );
   }
 
   render() {
-    const {
-      id,
-      name,
-      label,
-      type,
-      value,
-      colon,
-      maxHours,
-      maxMinutes,
-    } = this.props;
+    const { id, name, type, value, colon, maxHours, maxMinutes } = this.props;
 
     const [hours = '00', minutes = '00'] = this.getHoursMinsValue(
       value,
       colon,
       maxHours,
-      maxMinutes
+      maxMinutes,
     );
 
     const className = classNames({
@@ -91,7 +82,6 @@ class Time extends React.Component {
 
     return (
       <div className={className}>
-        <label htmlFor={selector}>{label ? label : name}</label>
         <div className="time-input" id={selector}>
           <input
             type="number"
@@ -132,7 +122,6 @@ Time.propTypes = {
   maxHours: PropTypes.number.isRequired,
   maxMinutes: PropTypes.number.isRequired,
   colon: PropTypes.string.isRequired,
-  label: PropTypes.string,
   value: PropTypes.string,
 };
 

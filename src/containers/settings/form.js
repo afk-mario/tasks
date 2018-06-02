@@ -6,22 +6,20 @@ import './style.css';
 
 let SettingsForm = ({ state, loadState, saveState, ip, onChangeIp }) => {
   return (
-    <div className="container settings">
-      <section className="wrapper">
-        <div className="version-number">V:{version}</div>
-        <section className="save">
-          <div
-            className="button"
-            onClick={() => {
-              saveState(state);
-            }}
-          >
-            save application
-          </div>
-        </section>
-        <Load name="load application" onLoad={loadState} />
+    <section className="settings wrapper">
+      <div className="version-number">V.{version}</div>
+      <section className="save">
+        <div
+          className="button"
+          onClick={() => {
+            saveState(state);
+          }}
+        >
+          save application
+        </div>
       </section>
-    </div>
+      <Load name="load application" onLoad={loadState} />
+    </section>
   );
 };
 

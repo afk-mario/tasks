@@ -3,6 +3,7 @@
   height: auto;
   margin: 0;
   font-family: var(--font-title);
+  padding-top: var(--margin);
   color: var(--black);
   font-size: 2em;
   letter-spacing: 0.1em;
@@ -11,6 +12,7 @@
 #header ul {
   padding: 0;
   margin: 0;
+  width: 100%;
   list-style: none;
   display: flex;
   flex-flow: row wrap;
@@ -27,7 +29,6 @@
 #header a {
   margin: 0;
   width: 100%;
-  padding: var(--half-margin);
   text-align: center;
   display: block;
   color: var(--medium-gray);
@@ -47,4 +48,10 @@
 #header a.active {
   color: var(--black);
   border-bottom: 2px solid var(--black);
+}
+
+@media screen and (max-width: 40em) {
+  #header {
+    font-size: 1.5em;
+  }
 }
