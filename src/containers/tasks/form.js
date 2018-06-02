@@ -1,6 +1,9 @@
 import React from 'react';
+import Select from 'react-select';
 
 import Input from '../../components/input';
+import TextArea from '../../components/textarea';
+import Time from '../../components/time';
 import spec from './spec';
 
 import { withRouter } from 'react-router';
@@ -11,6 +14,7 @@ class Form extends React.Component {
 
     this.state = { ...props.item };
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.onSelectOption = this.onSelectOption.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -32,10 +36,15 @@ class Form extends React.Component {
     });
   }
 
+  onSelectOption(item) {
+    const { value } = item;
+    this.setState({
+      duration: value,
+    });
+  }
+
   handleSubmit(event) {
     const { onSubmit, item } = this.props;
-
-    console.log(this.state);
 
     event.preventDefault();
     onSubmit(this.state);
@@ -58,12 +67,25 @@ class Form extends React.Component {
   }
 
   render() {
+    const options = spec.find(item => item.name === 'duration-option').options;
+    const duration = spec.find(item => item.name === 'duration');
+    const selected =
+      options.find(item => item.value === this.state.duration) ||
+      options[options.length - 1];
+
     return (
-      <form className="dark-container" onSubmit={this.handleSubmit}>
+      <form className="wrapper" onSubmit={this.handleSubmit}>
         {spec.map(
           (item, i) =>
             item.hide ? (
               ''
+            ) : item.type === 'textarea' ? (
+              <TextArea
+                key={i}
+                {...item}
+                value={this.state[item.name]}
+                onChange={this.handleInputChange}
+              />
             ) : (
               <Input
                 key={i}
@@ -73,7 +95,25 @@ class Form extends React.Component {
               />
             )
         )}
-        <button className="button blue" type="submit">
+
+        <Select
+          className="custom-select"
+          classNamePrefix="custom-select"
+          onChange={this.onSelectOption}
+          options={options}
+          value={selected}
+          clearable={false}
+          required
+        />
+
+        <Time
+          {...duration}
+          maxHours={2}
+          value={this.state[duration.name]}
+          onChange={this.handleInputChange}
+        />
+
+        <button className="button" type="submit">
           SAVE
         </button>
       </form>

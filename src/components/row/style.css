@@ -5,27 +5,38 @@
   display: block;
   cursor: pointer;
   text-align: left;
-  background: var(--dark-gray);
-  color: var(--light-gray);
+  color: var(--medium-gray);
   transition: all 0.2s ease;
   display: flex;
   flex-flow: row nowrap;
   flex: 1 0 auto;
 }
 
-.row span {
-  display: flex;
-  flex: 1 0 auto;
-  height: auto;
-  align-items: center;
-  padding: 0 var(--margin) 0 var(--margin);
+.row:not(:last-child) {
   border-bottom: 2px solid var(--medium-gray);
-  transition: all 0.2s ease;
 }
 
-.row span:hover {
-  color: var(--light-blue);
-  border-bottom-color: var(--light-blue);
+.row span {
+  display: flex;
+  height: auto;
+  align-items: center;
+  transition: all 0.2s ease;
+  padding: 0 var(--margin) 0 var(--margin);
+}
+
+/* .row:not(:last-child) span { */
+/*   border-bottom: 2px solid var(--medium-gray); */
+/* } */
+
+.row span.text {
+  flex: 1 0 auto;
+  font-family: var(--font-title);
+  font-size: 1.5em;
+}
+
+.row:hover {
+  color: var(--black);
+  border-bottom-color: var(--black);
 }
 
 .row:not(:last-child) {

@@ -1,0 +1,13 @@
+.reordable-row {
+  /* cursor: move !important; */
+}
+
+.reordable-row.is-dragging .draggable {
+  color: var(--red);
+}
+
+.reordable-row .draggable {
+  cursor: move;
+  padding-bottom: 4px;
+  border-right: 2px solid var(--medium-gray);
+}

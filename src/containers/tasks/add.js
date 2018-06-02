@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 
 import { addTask } from './actions';
 import Form from './form';
 import spec from './spec';
 
 const mapStateToProps = state => {
-  const { states } = state || [];
   const item = Object.assign(
     {},
     ...spec.map(({ name, value }) => ({ [name]: value }))
@@ -13,7 +13,6 @@ const mapStateToProps = state => {
 
   return {
     item,
-    options: states,
   };
 };
 
@@ -21,6 +20,7 @@ const mapDispatchToProps = dispatch => {
   return {
     onSubmit: item => {
       dispatch(addTask(item));
+      dispatch(push('/tasks/'));
     },
   };
 };

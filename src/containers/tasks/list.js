@@ -1,15 +1,15 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
-import List from '../../components/list';
-import { duplicateTask, deleteTask } from './actions';
+import List from '../../components/reordable-list';
+import { duplicateTask, deleteTask, moveTask } from './actions';
 import { truncate } from '../../lib/utils';
 
 const mapStateToProps = state => {
   const { tasks } = state || [];
   const items = tasks.map(item => ({
     id: item.pk,
-    text: truncate(item.name, 9),
+    text: truncate(item.name, 20),
   }));
   return {
     items,
@@ -34,6 +34,10 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
       const task = tasks.find(item => item.pk === pk);
       if (!task) return;
       dispatch(duplicateTask(task));
+    },
+
+    moveRow: (dragIndex, hoverIndex) => {
+      dispatch(moveTask(dragIndex, hoverIndex));
     },
   };
 };

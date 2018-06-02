@@ -50,3 +50,12 @@ export function loadTasks(items) {
     items,
   };
 }
+
+export const MOVE_TASK = 'MOVE_TASK';
+export function moveTask(dragIndex, hoverIndex) {
+  return {
+    type: MOVE_TASK,
+    dragIndex,
+    hoverIndex,
+  };
+}

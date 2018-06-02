@@ -1,10 +1,9 @@
 form {
   display: flex;
   padding: var(--margin);
-  width: 90%;
   margin: var(--margin) auto auto auto;
-  /* max-width: 500px; */
   flex-flow: column nowrap;
+  border: 2px solid var(--black);
 }
 
 input {
@@ -15,10 +14,9 @@ input {
   background: transparent;
   border: none;
   box-shadow: none;
-  color: var(--light-gray);
+  color: var(--medium-gray);
   border-bottom: 2px solid var(--medium-gray);
   transition: all 0.2s ease;
-  color: var(--light-blue);
 }
 
 input[type='number']::-webkit-outer-spin-button,
@@ -39,8 +37,8 @@ input[type='color'] {
 
 input:focus {
   /* color: var(--light-blue); */
-  color: var(--white);
-  border-bottom-color: var(--light-blue);
+  color: var(--black);
+  border-bottom-color: var(--black);
 }
 
 form > *:not(:first-child) {
@@ -50,7 +48,10 @@ form > *:not(:first-child) {
 label {
   margin: 0 0 var(--half-margin) 0;
   display: block;
-  color: var(--dark-blue);
+  color: var(--medium-gray);
+  font-family: var(--font-title);
+  font-size: 1.5em;
+  letter-spacing: 0.05em;
 }
 
 button,
@@ -79,7 +80,7 @@ form .button {
 }
 
 .input-checkbox i {
-  color: var(--light-blue);
+  color: var(--medium-gray);
   transition: all 0.2 ease;
   flex: 1;
   text-align: right;
@@ -93,27 +94,18 @@ input[type='checkbox']:checked + label i {
   color: var(--red);
 }
 
-.Select {
-  border: 2px solid var(--dark-blue);
+.custom-select {
+  border: 2px solid var(--medium-gray);
 }
 
-.Select .Select-control {
+.custom-select .custom-select__control {
   border-radius: 0;
-  border: 2px solid var(--dark-blue);
+  border: none;
 }
 
-.Select,
-.Select div,
-.Select input,
-.Select span {
-  background: var(--dark-gray);
-  color: var(--light-gray);
-}
-
-.Select.has-value.Select--single.is-focused > .Select-control .Select-value span {
-  color: var(--white);
-}
-
-.Select.has-value.Select--single > .Select-control .Select-value span {
-  color: var(--light-blue);
+.custom-select,
+.custom-select div,
+.custom-select input,
+.custom-select span {
+  color: var(--medium-gray);
 }

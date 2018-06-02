@@ -1,0 +1,17 @@
+.time-input {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.time-input input[type='number'] {
+  border: 2px solid var(--medium-gray);
+  text-align: center;
+  padding: var(--half-margin);
+}
+
+.time-input span {
+  font-size: 2em;
+  color: black;
+  padding: var(--half-margin);
+}

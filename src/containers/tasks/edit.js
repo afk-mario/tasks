@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import { push } from 'react-router-redux';
 
 import { editTask } from './actions';
 import Form from './form';
@@ -22,6 +23,7 @@ const mapDispatchToProps = (dispatch, props) => {
   return {
     onSubmit: item => {
       dispatch(editTask(item));
+      dispatch(push('/tasks/'));
     },
   };
 };

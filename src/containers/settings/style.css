@@ -1,30 +1,28 @@
 .save {
-  background: var(--dark-gray);
   width: 80%;
   padding: var(--margin);
   margin: auto;
 }
 
-.save .button.blue {
+.save .button {
   width: 100%;
   padding: var(--margin);
   font-size: 1.6em;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.1em;
   font-weight: 100;
   text-transform: uppercase;
   line-height: 2.5em;
-  color: var(--dark-blue);
+  color: var(--medium-gray);
   margin: auto;
-  background: var(--black);
   text-align: center;
-  border: 2px solid var(--dark-blue);
+  border: 2px solid var(--medium-gray);
   cursor: pointer;
   transition: all 0.2s ease;
 }
-.save .button.blue:hover {
-  color: var(--light-blue);
-  border-color: var(--light-blue);
-  background: var(--dark-gray);
+
+.save .button:hover {
+  color: var(--black);
+  border-color: var(--black);
 }
 
 .container.settings {
@@ -35,7 +33,6 @@
   justify-content: center;
   align-content: center;
   overflow-y: auto;
-  padding: var(--margin);
 }
 
 .settings .dark-container {

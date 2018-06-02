@@ -7,11 +7,11 @@ import './style.css';
 let SettingsForm = ({ state, loadState, saveState, ip, onChangeIp }) => {
   return (
     <div className="container settings">
-      <section className="dark-container">
+      <section className="wrapper">
         <div className="version-number">V:{version}</div>
         <section className="save">
           <div
-            className="button blue"
+            className="button"
             onClick={() => {
               saveState(state);
             }}

@@ -1,21 +1,14 @@
 import React from 'react';
-
-import RouteWithSubRoutes from '../../components/RouteWithSubRoutes';
+import { NavLink } from 'react-router-dom';
 
 import List from './list';
-import Tasks from './tasks';
 import './style.css';
 
 export default ({ routes }) => (
-  <section className="tasks">
-    <section className="side-static">
-      <List />
-      <Tasks />
-    </section>
-    <section className="child">
-      <div className="container">
-        {routes.map((route, i) => <RouteWithSubRoutes key={i} {...route} />)}
-      </div>
-    </section>
+  <section className="tasks wrapper">
+    <div className="add-task">
+      <NavLink to="/tasks/add">+ Task</NavLink>
+    </div>
+    <List />
   </section>
 );

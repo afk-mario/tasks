@@ -1,7 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Fira+Mono:400,500,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto|Rozha+One');
 
 :root {
-  --font: 'Fira Mono', monospace;
+  --font: 'Roboto', sans-serif;
+  --font-title: 'Rozha One', serif;
 
   /* sizes */
   --border-division: 2px;
@@ -19,13 +20,13 @@
   --white: #ffffff;
   --black: #000000;
   --dark-gray: #0c0c0d;
-  --medium-gray: #323234;
+  --medium-gray: #b8b8b8;
   --light-gray: #b2b2b2;
   --light-gray: #f2f2f2;
   --blue: #0080ff;
   --light-blue: #98d1cf;
   --dark-blue: #185869;
-  --red: #c33126;
+  --red: red;
   --green: #2ab38d;
   --yellow: #f1b731;
   --magenta: #7a7e9d;
@@ -51,13 +52,13 @@ body,
 html {
   margin: 0;
   padding: 0;
-  background: var(--black);
+  background: var(--white);
   font-family: var(--font);
 }
 
 .wrapper {
-  width: 100%;
-  /* max-width: 1024px; */
+  width: 80%;
+  max-width: 800px;
   margin: auto;
   display: block;
 }
@@ -101,10 +102,21 @@ html {
 }
 
 .page-child {
-  height: calc(100vh - var(--header-height) - var(--footer-height));
-  border-top: var(--border-division) solid var(--medium-gray);
+  /* height: calc(100vh - var(--header-height) - var(--footer-height)); */
+  padding: var(--margin) 0 0 0;
   color: var(--light-gray);
   position: relative;
+}
+
+h1 {
+  color: var(--black);
+  width: auto;
+  font-family: var(--font-title);
+  font-size: 2em;
+  letter-spacing: 0.1em;
+  text-align: center;
+  margin: auto;
+  text-transform: uppercase;
 }
 
 h2 {

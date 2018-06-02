@@ -6,6 +6,23 @@
   flex-flow: row wrap;
 }
 
+.add-task a {
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-family: var(--font-title);
+  font-size: 2em;
+  letter-spacing: 0.1em;
+  color: var(--medium-gray);
+  text-decoration: none;
+  margin-bottom: var(--margin);
+}
+
+.add-task a:hover {
+  color: var(--black);
+  text-decoration: line-through;
+}
+
 .side-static {
   width: var(--sidebar-width);
   min-width: var(--sidebar-min-width);
