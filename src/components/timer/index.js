@@ -33,7 +33,7 @@ class Timer extends React.Component {
       text,
       task,
     } = this.props;
-    const { stopTimer, startTimer } = this.props;
+    const { stopTimer, startTimer, clearTimer, resetTimer } = this.props;
     let elapsed = getElapsedTime(baseTime, startedAt, stoppedAt);
     elapsed = formatSeconds(elapsed, ':');
     const pk = task === undefined ? undefined : task.pk;
@@ -56,6 +56,8 @@ class Timer extends React.Component {
               {stoppedAt === undefined ? '||' : '▶'}
             </ActionButton>
           )}
+          {task && <ActionButton onClick={clearTimer}>■</ActionButton>}
+          {task && <ActionButton onClick={resetTimer}>↺</ActionButton>}
         </div>
         {task && (
           <ReactMarkdown className="description" source={task.description} />

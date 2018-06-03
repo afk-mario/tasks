@@ -15,7 +15,6 @@ function reducer(state = initialState, action) {
         baseTime: 0,
         startedAt: state.startedAt ? action.now : undefined,
         stoppedAt: state.stoppedAt ? action.now : undefined,
-        pk: state.stoppedAt ? state.pk : undefined,
       };
     case CLEAR_TIMER:
       return initialState;

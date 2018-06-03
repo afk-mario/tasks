@@ -21,19 +21,19 @@ const formatText = task => {
   return text;
 };
 
-const filterTasks = (tasks, filter) => {
+const filterTasks = (tasks, filter, active) => {
   switch (filter.value) {
     case FILTER_NONE:
-      return tasks.filter(item => item.status !== 'CMP');
+      return tasks.filter(item => item.status !== 'CMP' && item.pk !== active);
     case FILTER_SHORT:
       console.log('short');
-      return tasks.filter(item => item.duration <= 30);
+      return tasks.filter(item => item.duration <= 30 && item.pk !== active);
     case FILTER_MEDIUM:
-      return tasks.filter(item => item.duration <= 45);
+      return tasks.filter(item => item.duration <= 45 && item.pk !== active);
     case FILTER_LONG:
-      return tasks.filter(item => item.duration > 45);
+      return tasks.filter(item => item.duration > 45 && item.pk !== active);
     case FILTER_COMPLETE:
-      return tasks.filter(item => item.status === 'CMP');
+      return tasks.filter(item => item.status === 'CMP' && item.pk !== active);
     default:
       break;
   }
@@ -41,7 +41,7 @@ const filterTasks = (tasks, filter) => {
 
 const mapStateToProps = state => {
   const { tasks, timer, filter } = state || [];
-  const filteredItems = filterTasks(tasks, filter);
+  const filteredItems = filterTasks(tasks, filter, timer.pk);
 
   const items = filteredItems.map(item => ({
     id: item.pk,

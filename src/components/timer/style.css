@@ -8,7 +8,7 @@
   display: flex;
   flex-flow: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   border: 2px solid var(--medium-gray);
   cursor: pointer;
 }
@@ -20,6 +20,7 @@
 
 .timer .title .info {
   font-size: 1.2em;
+  flex: 1 0 auto;
   letter-spacing: 0.1em;
   color: var(--black);
 }
