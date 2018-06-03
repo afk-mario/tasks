@@ -17,8 +17,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onUpdate: (task, time) =>
-      dispatch(editTask({ ...task, timeDone: getSeconds(time) })),
+    onUpdate: (task, time) => {
+      if (task) dispatch(editTask({ ...task, timeDone: getSeconds(time) }));
+    },
     stopTimer: () => dispatch(stopTimer()),
     startTimer: (pk, time) => dispatch(startTimer(time * 1000, pk)),
     titleClick: pk => {

@@ -6,6 +6,14 @@ import { deleteTask, moveTask } from './actions';
 import { startTimer, clearTimer } from '../timer/actions';
 import { truncate, twoDecimals } from '../../lib/utils';
 
+import {
+  FILTER_NONE,
+  FILTER_SHORT,
+  FILTER_MEDIUM,
+  FILTER_LONG,
+  FILTER_COMPLETE,
+} from '../filter/filters';
+
 const formatText = task => {
   const minutes = task.timeDone / 60;
   const porcentage = twoDecimals((minutes * 100) / task.duration);
@@ -13,10 +21,29 @@ const formatText = task => {
   return text;
 };
 
-const mapStateToProps = state => {
-  const { tasks, timer } = state || [];
+const filterTasks = (tasks, filter) => {
+  switch (filter.value) {
+    case FILTER_NONE:
+      return tasks.filter(item => item.status !== 'CMP');
+    case FILTER_SHORT:
+      console.log('short');
+      return tasks.filter(item => item.duration <= 30);
+    case FILTER_MEDIUM:
+      return tasks.filter(item => item.duration <= 45);
+    case FILTER_LONG:
+      return tasks.filter(item => item.duration > 45);
+    case FILTER_COMPLETE:
+      return tasks.filter(item => item.status === 'CMP');
+    default:
+      break;
+  }
+};
 
-  const items = tasks.map(item => ({
+const mapStateToProps = state => {
+  const { tasks, timer, filter } = state || [];
+  const filteredItems = filterTasks(tasks, filter);
+
+  const items = filteredItems.map(item => ({
     id: item.pk,
     text: formatText(item),
   }));

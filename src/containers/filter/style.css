@@ -1,0 +1,17 @@
+.filter-by {
+  display: flex;
+  flex-flow: row wrap;
+  margin-bottom: var(--margin);
+}
+
+.filter-by span.name {
+  color: var(--medium-gray);
+  border: 2px solid var(--medium-gray);
+  border-right: none;
+  font: var(--font-title);
+  padding: var(--half-margin);
+}
+
+.filter-by .custom-select {
+  flex: 1 0 auto;
+}
