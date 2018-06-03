@@ -5,10 +5,7 @@ import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 
 import Row from '../row';
-import Delete from '../delete';
-import Export from '../export';
-import Send from '../send';
-import Duplicate from '../duplicate';
+import ActionButton from '../action-button';
 
 import './style.css';
 
@@ -20,8 +17,7 @@ class ReordableList extends React.Component {
       moveRow,
       onDelete,
       onDuplicate,
-      onExport,
-      onSend,
+      onStart,
     } = this.props;
 
     if (items.length < 1)
@@ -40,11 +36,29 @@ class ReordableList extends React.Component {
             onClick={() => onClick(item.id)}
             moveRow={moveRow}
           >
-            {onExport && <Export id={item.id} onClick={onExport} />}
-            {onSend && <Send id={item.id} onClick={onSend} />}
-            {onDuplicate && <Duplicate id={item.id} onClick={onDuplicate} />}
+            {onStart && (
+              <ActionButton id={item.id} onClick={onStart} className="start">
+                ▶
+              </ActionButton>
+            )}
+            {onDuplicate && (
+              <ActionButton
+                id={item.id}
+                onClick={onDuplicate}
+                className="duplicate"
+              >
+                D
+              </ActionButton>
+            )}
             {onDelete && (
-              <Delete id={item.id} onClick={onDelete} name={item.text} />
+              <ActionButton
+                id={item.id}
+                onClick={onDelete}
+                className="delete"
+                name={item.text}
+              >
+                X
+              </ActionButton>
             )}
           </ReordableRow>
         ))}
@@ -64,8 +78,7 @@ ReordableList.propTypes = {
   moveRow: PropTypes.func.isRequired,
   onDelete: PropTypes.func,
   onDuplicate: PropTypes.func,
-  onExport: PropTypes.func,
-  onSend: PropTypes.func,
+  onStart: PropTypes.func,
 };
 
 export default DragDropContext(HTML5Backend)(ReordableList);

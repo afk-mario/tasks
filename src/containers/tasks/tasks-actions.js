@@ -1,22 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 
 import { GenRandomTask } from '../../lib/random-tasks';
 import Actions from '../../components/actions';
-import { withRouter } from 'react-router';
 import { clearTasks, addTask } from './actions';
+import { clearTimer } from '../timer/actions';
 
 function mapStateToProps(state) {
   const { tasks } = state;
   return { items: tasks };
 }
 
-const TaskActions = ({ items, dispatch, history }) => {
+const TaskActions = ({ items, dispatch }) => {
   const tasks = [
     {
       name: 'New task',
       onClick: () => {
-        history.push('/tasks/add');
+        dispatch(push('/tasks/add'));
       },
     },
     {
@@ -29,10 +30,11 @@ const TaskActions = ({ items, dispatch, history }) => {
       name: 'Clear tasks',
       onClick: () => {
         dispatch(clearTasks());
+        dispatch(clearTimer());
       },
     },
   ];
   return <Actions items={tasks} />;
 };
 
-export default withRouter(connect(mapStateToProps)(TaskActions));
+export default connect(mapStateToProps)(TaskActions);

@@ -1,10 +1,10 @@
-.send {
+.action-button {
   width: 60px;
   height: 100%;
+  font-family: var(--font-title);
   border-left: 2px solid var(--medium-gray);
-  border-bottom: 2px solid var(--medium-gray);
   background: transparent;
-  color: var(--light-gray);
+  color: var(--medium-gray);
   margin: 0;
   font-size: 1.2em;
   font-weight: bold;
@@ -18,18 +18,18 @@
   transition: all 0.2s ease;
   text-shadow: none;
   cursor: pointer;
+  flex: 0 0 auto;
 }
 
-.send:not(:firs-child) {
+.action-button:not(:firs-child) {
   border-top: none;
 }
 
-.send:hover {
-  color: var(--green);
-  border-left-color: var(--green);
-  box-shadow: var(--box-shadow-2);
+.action-button:hover {
+  color: var(--red);
+  border-left-color: var(--red);
 }
 
-.send i {
+.action-button i {
   font-style: normal;
 }

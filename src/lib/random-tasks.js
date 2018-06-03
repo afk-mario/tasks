@@ -63,13 +63,13 @@ export const GenRandomTask = () => {
   const description = GenRandomDescription();
   const duration = GenRandomDuration();
   const timeDone = Math.round(duration * rndmDecimal(0.8, 1) * 100) / 100;
-  const status = timeDone == duration ? 'CMP' : 'SRT';
+  const status = timeDone === duration ? 'CMP' : 'SRT';
 
   return {
     name,
     description,
     duration,
-    timeDone,
+    timeDone: timeDone * 60,
     status,
   };
 };

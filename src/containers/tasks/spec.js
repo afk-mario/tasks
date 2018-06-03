@@ -33,20 +33,20 @@ const spec = [
     name: 'duration-option',
     label: 'Duraction',
     type: 'select',
-    value: 30,
+    value: 30 * 60,
     required: true,
     hide: true,
     options: [
       {
-        value: 30,
+        value: 30 * 60,
         label: 'short - 00:30',
       },
       {
-        value: 45,
+        value: 45 * 60,
         label: 'medium - 00:45',
       },
       {
-        value: 60,
+        value: 60 * 60,
         label: 'long - 01:00',
       },
       {

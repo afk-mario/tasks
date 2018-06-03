@@ -1,0 +1,36 @@
+.timer {
+  display: flex;
+  flex-flow: column;
+  margin: var(--margin) auto var(--margin) auto;
+}
+
+.timer .title {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid var(--medium-gray);
+  cursor: pointer;
+}
+
+.timer .title span {
+  padding: var(--margin);
+  font-family: var(--font-title);
+}
+
+.timer .title .info {
+  font-size: 1.2em;
+  letter-spacing: 0.1em;
+  color: var(--black);
+}
+
+.timer .title .action-button {
+  padding: var(--margin);
+}
+
+.timer .description {
+  background: var(--light-gray);
+  color: var(--black);
+  font-family: var(--font);
+  padding: var(--margin);
+}

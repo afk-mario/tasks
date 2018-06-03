@@ -41,3 +41,35 @@ export function truncate(string = '', length = 0) {
   if (string.length > length) return string.substring(0, length) + '…';
   return string;
 }
+
+export function getElapsedTime(
+  baseTime,
+  startedAt,
+  stoppedAt = new Date().getTime(),
+) {
+  if (!startedAt) {
+    return 0;
+  } else {
+    return stoppedAt - startedAt + baseTime;
+  }
+}
+
+export function getSeconds(input) {
+  return input / 1000;
+}
+
+export function formatSeconds(input, separator) {
+  const seconds = getSeconds(input);
+  let pad = function(input) {
+    return input < 10 ? '0' + input : input;
+  };
+  return [
+    pad(Math.floor(seconds / 3600)),
+    pad(Math.floor((seconds % 3600) / 60)),
+    pad(Math.floor(seconds % 60)),
+  ].join(typeof separator !== 'undefined' ? separator : ':');
+}
+
+export function twoDecimals(input) {
+  return Math.round(input * 100) / 100;
+}

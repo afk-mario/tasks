@@ -14,10 +14,10 @@ function tasks(state = [], action) {
   switch (action.type) {
     case ADD_TASK:
       return [
-        ...state,
         {
           ...action.item,
         },
+        ...state,
       ];
     case EDIT_TASK:
       return state.map(
@@ -26,7 +26,7 @@ function tasks(state = [], action) {
             ? {
                 ...action.item,
               }
-            : item
+            : item,
       );
     case DUPLICATE_TASK:
       return [
