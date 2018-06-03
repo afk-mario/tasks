@@ -16,8 +16,16 @@ const spec = [
   {
     name: 'duration',
     label: 'Duration',
-    type: 'text',
-    value: '00:00',
+    type: 'time',
+    value: 30,
+    required: true,
+    hide: true,
+  },
+  {
+    name: 'timeDone',
+    label: 'Time done',
+    type: 'number',
+    value: 0,
     required: true,
     hide: true,
   },
@@ -25,25 +33,47 @@ const spec = [
     name: 'duration-option',
     label: 'Duraction',
     type: 'select',
-    value: '',
+    value: 30,
     required: true,
     hide: true,
     options: [
       {
-        value: '00:30',
+        value: 30,
         label: 'short - 00:30',
       },
       {
-        value: '00:45',
+        value: 45,
         label: 'medium - 00:45',
       },
       {
-        value: '01:00',
+        value: 60,
         label: 'long - 01:00',
       },
       {
-        value: '00:00',
+        value: 0,
         label: 'custom duration',
+      },
+    ],
+  },
+  {
+    name: 'status',
+    label: 'Status',
+    type: 'select',
+    value: 'IDLE',
+    required: true,
+    hide: true,
+    options: [
+      {
+        value: 'IDL',
+        label: 'Idle',
+      },
+      {
+        value: 'STR',
+        label: 'Started',
+      },
+      {
+        value: 'CMP',
+        label: 'Completed',
       },
     ],
   },

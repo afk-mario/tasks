@@ -4,18 +4,12 @@ function rndm(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
 
-const randomDurations = [
-  '00:30',
-  '00:35',
-  '00:45',
-  '01:10',
-  '01:00',
-  '01:12',
-  '01:25',
-  '01:30',
-  '01:45',
-  '02:00',
-];
+function rndmDecimal(min, max) {
+  const number = Math.random() * (max - min) + min;
+  return Math.round(number * 100) / 100;
+}
+
+const randomDurations = [30, 35, 45, 70, 60, 72, 85, 90, 105, 120];
 
 const randomTitleVerb = [
   'Do',
@@ -65,9 +59,17 @@ export const GenRandomDuration = () =>
   randomDurations[rndm(randomDurations.length - 1)];
 
 export const GenRandomTask = () => {
+  const name = GenRandomTitle();
+  const description = GenRandomDescription();
+  const duration = GenRandomDuration();
+  const timeDone = Math.round(duration * rndmDecimal(0.8, 1) * 100) / 100;
+  const status = timeDone == duration ? 'CMP' : 'SRT';
+
   return {
-    name: GenRandomTitle(),
-    description: GenRandomDescription(),
-    duration: GenRandomDuration(),
+    name,
+    description,
+    duration,
+    timeDone,
+    status,
   };
 };

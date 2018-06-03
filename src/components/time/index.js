@@ -11,18 +11,21 @@ class Time extends React.Component {
     super(props);
 
     this.state = {
-      hours: 0,
-      minutes: 0,
+      hours: Math.floor(props.value / 60),
+      minutes: props.value % 60,
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.getStringValue = this.getStringValue.bind(this);
+    this.getMinutesValue = this.getMinutesValue.bind(this);
   }
 
-  getHoursMinsValue(value, colon, maxHours, maxMinutes) {
-    const time = value.split(colon) || [0, 0];
+  getHoursMinsValue(value, maxHours, maxMinutes) {
+    /* const time = value.split(colon) || [0, 0]; */
 
-    const [hours, minutes] = time;
+    let minutes = parseInt(value, 10);
+    const hours = minutes / 60;
+    minutes = minutes % 60;
 
     const hoursClamped = clamp(parseInt(hours, 10), 0, maxHours);
     const minutesClamped =
@@ -43,20 +46,25 @@ class Time extends React.Component {
     return value;
   }
 
+  getMinutesValue() {
+    const { hours, minutes } = this.state;
+    return parseInt(hours, 10) * 60 + parseInt(minutes, 10);
+  }
+
   handleChange(event) {
     const target = event.target;
     const { name, value } = target;
 
     this.setState(
       {
-        [name]: value,
+        [name]: parseInt(value, 10),
       },
       () => {
         this.props.onChange({
           target: {
             type: 'time',
             name: this.props.name,
-            value: this.getStringValue(),
+            value: this.getMinutesValue(),
           },
         });
       },
@@ -66,9 +74,8 @@ class Time extends React.Component {
   render() {
     const { id, name, type, value, colon, maxHours, maxMinutes } = this.props;
 
-    const [hours = '00', minutes = '00'] = this.getHoursMinsValue(
+    const [hours = 0, minutes = 0] = this.getHoursMinsValue(
       value,
-      colon,
       maxHours,
       maxMinutes,
     );
@@ -122,7 +129,7 @@ Time.propTypes = {
   maxHours: PropTypes.number.isRequired,
   maxMinutes: PropTypes.number.isRequired,
   colon: PropTypes.string.isRequired,
-  value: PropTypes.string,
+  value: PropTypes.number,
 };
 
 export default Time;

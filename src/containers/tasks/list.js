@@ -9,7 +9,7 @@ const mapStateToProps = state => {
   const { tasks } = state || [];
   const items = tasks.map(item => ({
     id: item.pk,
-    text: truncate(item.name, 20),
+    text: truncate(`${item.name} - ${item.status}`, 40),
   }));
   return {
     items,
@@ -46,8 +46,8 @@ const TaskList = withRouter(
   connect(
     mapStateToProps,
     null,
-    mergeProps
-  )(List)
+    mergeProps,
+  )(List),
 );
 
 export default TaskList;
