@@ -30,11 +30,23 @@ class Timer extends React.Component {
       baseTime,
       startedAt,
       stoppedAt,
+      onDone,
       text,
       task,
     } = this.props;
     const { stopTimer, startTimer, clearTimer, resetTimer } = this.props;
     let elapsed = getElapsedTime(baseTime, startedAt, stoppedAt);
+
+    if (!task)
+      return (
+        <section className="timer">
+          <div className="title">
+            <span className="info">{`${text} - ${elapsed}`}</span>
+          </div>
+        </section>
+      );
+
+    elapsed = task.duration * 60000 - elapsed;
     elapsed = formatSeconds(elapsed, ':');
     const pk = task === undefined ? undefined : task.pk;
 
@@ -45,23 +57,21 @@ class Timer extends React.Component {
             className="info"
             onClick={() => titleClick(pk)}
           >{`${text} - ${elapsed}`}</span>
-          {task && (
-            <ActionButton
-              onClick={
-                stoppedAt === undefined
-                  ? stopTimer
-                  : () => startTimer(pk, task.timeDone)
-              }
-            >
-              {stoppedAt === undefined ? '||' : '▶'}
-            </ActionButton>
-          )}
-          {task && <ActionButton onClick={clearTimer}>■</ActionButton>}
-          {task && <ActionButton onClick={resetTimer}>↺</ActionButton>}
+          <ActionButton onClick={() => onDone(task)}>✓</ActionButton>
+          <ActionButton
+            onClick={
+              stoppedAt === undefined
+                ? stopTimer
+                : () => startTimer(pk, task.timeDone)
+            }
+          >
+            {stoppedAt === undefined ? '||' : '▶'}
+          </ActionButton>
+          <ActionButton onClick={clearTimer}>■</ActionButton>
+          <ActionButton onClick={resetTimer}>↺</ActionButton>
         </div>
-        {task && (
-          <ReactMarkdown className="description" source={task.description} />
-        )}
+        <ReactMarkdown className="description" source={task.description} />
+        )
       </section>
     );
   }

@@ -2,42 +2,10 @@ import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
 import List from '../../components/reordable-list';
-import { deleteTask, moveTask } from './actions';
+import { editTask, deleteTask, moveTask } from './actions';
 import { startTimer, clearTimer } from '../timer/actions';
-import { truncate, twoDecimals } from '../../lib/utils';
-
-import {
-  FILTER_NONE,
-  FILTER_SHORT,
-  FILTER_MEDIUM,
-  FILTER_LONG,
-  FILTER_COMPLETE,
-} from '../filter/filters';
-
-const formatText = task => {
-  const minutes = task.timeDone / 60;
-  const porcentage = twoDecimals((minutes * 100) / task.duration);
-  const text = `${task.name} - ${porcentage}%`;
-  return text;
-};
-
-const filterTasks = (tasks, filter, active) => {
-  switch (filter.value) {
-    case FILTER_NONE:
-      return tasks.filter(item => item.status !== 'CMP' && item.pk !== active);
-    case FILTER_SHORT:
-      console.log('short');
-      return tasks.filter(item => item.duration <= 30 && item.pk !== active);
-    case FILTER_MEDIUM:
-      return tasks.filter(item => item.duration <= 45 && item.pk !== active);
-    case FILTER_LONG:
-      return tasks.filter(item => item.duration > 45 && item.pk !== active);
-    case FILTER_COMPLETE:
-      return tasks.filter(item => item.status === 'CMP' && item.pk !== active);
-    default:
-      break;
-  }
-};
+import { truncate } from '../../lib/utils';
+import { getPorcentage, filterTasks } from './utils';
 
 const mapStateToProps = state => {
   const { tasks, timer, filter } = state || [];
@@ -45,7 +13,8 @@ const mapStateToProps = state => {
 
   const items = filteredItems.map(item => ({
     id: item.pk,
-    text: formatText(item),
+    text: truncate(item.name, 20),
+    porcentage: getPorcentage(item),
   }));
 
   return {
@@ -58,8 +27,7 @@ const mapStateToProps = state => {
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
   const { dispatch } = dispatchProps;
   const { tasks, timer } = stateProps || {};
-  const timerTask = timer.task || {};
-  const timerPk = timerTask.pk || undefined;
+  const timerPk = timer.pk || undefined;
 
   return {
     ...stateProps,
@@ -71,11 +39,25 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
       if (pk === timerPk) dispatch(clearTimer());
       dispatch(deleteTask(pk));
     },
-    onStart: pk => {
+    onStart: (pk, index) => {
       const task = tasks.find(item => item.pk === pk);
       if (!task) return;
       const elapsed = task.timeDone * 1000;
+      dispatch(moveTask(index, 0));
+      dispatch(editTask({ ...task, status: 'STR' }));
       dispatch(startTimer(elapsed, pk));
+    },
+    onDone: pk => {
+      const task = tasks.find(item => item.pk === pk);
+      if (!task) return;
+      dispatch(
+        editTask({ ...task, status: 'CMP', timeDone: task.duration * 60 }),
+      );
+    },
+    onRestart: pk => {
+      const task = tasks.find(item => item.pk === pk);
+      if (!task) return;
+      dispatch(editTask({ ...task, status: 'IDL', timeDone: 0 }));
     },
     moveRow: (dragIndex, hoverIndex) => {
       dispatch(moveTask(dragIndex, hoverIndex));

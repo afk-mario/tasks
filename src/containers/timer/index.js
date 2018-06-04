@@ -18,7 +18,19 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onUpdate: (task, time) => {
-      if (task) dispatch(editTask({ ...task, timeDone: getSeconds(time) }));
+      if (!task) return;
+      dispatch(editTask({ ...task, timeDone: getSeconds(time) }));
+      if (task.duration <= task.timeDone / 60) {
+        dispatch(
+          editTask({ ...task, status: 'CMP', timeDone: task.duration * 60 }),
+        );
+        dispatch(clearTimer());
+      }
+    },
+    onDone: task => {
+      if (!task) return;
+      dispatch(editTask({ ...task, status: 'CMP' }));
+      dispatch(clearTimer());
     },
     stopTimer: () => dispatch(stopTimer()),
     clearTimer: () => dispatch(clearTimer()),

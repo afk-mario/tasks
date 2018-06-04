@@ -15,7 +15,7 @@
   flex: 0 0 auto;
   display: inline-block;
   text-align: left;
-  font-family: var(--font-title);
+  font-family: var(--font);
   font-size: 1em;
   letter-spacing: 0.1em;
   color: var(--medium-gray);

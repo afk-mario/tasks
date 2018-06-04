@@ -1,0 +1,38 @@
+.charts h2 {
+  text-align: center;
+  margin-top: 0;
+}
+.charts .pies {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.charts .pies .chart {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  flex: 1 0 auto;
+}
+
+.charts .pies .chart:first-child {
+  margin-right: var(--margin);
+}
+
+.charts .chart {
+  background: var(--light-gray);
+  margin: var(--margin) auto auto auto;
+  padding: var(--margin);
+}
+
+@media screen and (max-width: 40em) {
+  .charts .pies .chart {
+    width: 100%;
+  }
+  .charts .pies .chart:first-child {
+    margin-right: 0;
+  }
+}

@@ -18,6 +18,7 @@ class ReordableList extends React.Component {
       onDelete,
       onDuplicate,
       onStart,
+      onDone,
     } = this.props;
 
     if (items.length < 1)
@@ -36,8 +37,17 @@ class ReordableList extends React.Component {
             onClick={() => onClick(item.id)}
             moveRow={moveRow}
           >
+            {onDone && (
+              <ActionButton id={item.id} onClick={onDone} className="done">
+                ✓
+              </ActionButton>
+            )}
             {onStart && (
-              <ActionButton id={item.id} onClick={onStart} className="start">
+              <ActionButton
+                id={item.id}
+                onClick={() => onStart(item.id, index)}
+                className="start"
+              >
                 ▶
               </ActionButton>
             )}

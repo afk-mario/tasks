@@ -3,6 +3,8 @@ export const FILTER_SHORT = 'FILTER_SHORT';
 export const FILTER_MEDIUM = 'FILTER_MEDIUM';
 export const FILTER_LONG = 'FILTER_LONG';
 export const FILTER_COMPLETE = 'FILTER_COMPLETE';
+export const FILTER_IDLE = 'FILTER_IDLE';
+export const FILTER_STARTED = 'FILTER_STARTED';
 
 export const filters = [
   {
@@ -24,5 +26,13 @@ export const filters = [
   {
     name: 'Complete',
     value: FILTER_COMPLETE,
+  },
+  {
+    name: 'Idle',
+    value: FILTER_IDLE,
+  },
+  {
+    name: 'Started',
+    value: FILTER_STARTED,
   },
 ];

@@ -3,7 +3,7 @@ import React from 'react';
 import Tasks from './containers/tasks';
 import AddTasks from './containers/tasks/add';
 import EditTasks from './containers/tasks/edit';
-import NotFound from './components/404';
+import Charts from './containers/charts';
 
 import Settings from './containers/settings';
 import { Redirect } from 'react-router-dom';
@@ -31,10 +31,10 @@ const routes = [
     exact: true,
   },
   {
-    path: '/analytics',
-    name: 'Analytics',
+    path: '/charts',
+    name: 'Charts',
     exact: true,
-    component: NotFound,
+    component: Charts,
   },
   {
     path: '/settings',

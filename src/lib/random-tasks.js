@@ -9,7 +9,22 @@ function rndmDecimal(min, max) {
   return Math.round(number * 100) / 100;
 }
 
-const randomDurations = [30, 35, 45, 70, 60, 72, 85, 90, 105, 120];
+const randomDurations = [
+  13,
+  14,
+  22,
+  30,
+  35,
+  42,
+  45,
+  50,
+  55,
+  60,
+  70,
+  85,
+  90,
+  120,
+];
 
 const randomTitleVerb = [
   'Do',

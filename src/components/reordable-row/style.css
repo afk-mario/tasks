@@ -1,5 +1,12 @@
 .reordable-row {
-  /* cursor: move !important; */
+}
+
+.reordable-row .text {
+  position: relative;
+}
+
+.reordable-row .text span {
+  z-index: 2;
 }
 
 .reordable-row.is-dragging .draggable {

@@ -33,20 +33,20 @@ const spec = [
     name: 'duration-option',
     label: 'Duraction',
     type: 'select',
-    value: 30 * 60,
+    value: 30,
     required: true,
     hide: true,
     options: [
       {
-        value: 30 * 60,
+        value: 30,
         label: 'short - 00:30',
       },
       {
-        value: 45 * 60,
+        value: 45,
         label: 'medium - 00:45',
       },
       {
-        value: 60 * 60,
+        value: 60,
         label: 'long - 01:00',
       },
       {
@@ -59,7 +59,7 @@ const spec = [
     name: 'status',
     label: 'Status',
     type: 'select',
-    value: 'IDLE',
+    value: 'IDL',
     required: true,
     hide: true,
     options: [

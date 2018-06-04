@@ -8,7 +8,7 @@
 }
 
 .version-number {
-  color: var(--medium-gray);
+  color: var(--dark-gray);
   font-family: var(--font-title);
   font-size: 2em;
   letter-spacing: 0.1em;

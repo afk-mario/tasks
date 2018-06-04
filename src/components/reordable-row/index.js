@@ -6,6 +6,7 @@ import classNames from 'classnames';
 
 import flow from 'lodash.flow';
 
+import Porcentage from '../porcentage';
 import './style.css';
 
 const rowSource = {
@@ -84,6 +85,7 @@ class ReordableRow extends React.Component {
   render() {
     const {
       text,
+      porcentage,
       onClick,
       children,
       isDragging,
@@ -102,7 +104,8 @@ class ReordableRow extends React.Component {
         <li className={className}>
           <span className="draggable">|||</span>
           <span className="text" onClick={onClick}>
-            {text}
+            {porcentage > 0 && <Porcentage porcentage={porcentage} />}
+            <span>{text}</span>
           </span>
           {children}
         </li>,

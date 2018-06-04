@@ -97,6 +97,7 @@ input[type='checkbox']:checked + label i {
 .custom-select {
   border: 2px solid var(--medium-gray);
   color: var(--medium-gray);
+  z-index: 3;
 }
 
 .custom-select .custom-select__control {

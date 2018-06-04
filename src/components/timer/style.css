@@ -15,7 +15,7 @@
 
 .timer .title span {
   padding: var(--margin);
-  font-family: var(--font-title);
+  font-family: var(--font);
 }
 
 .timer .title .info {
