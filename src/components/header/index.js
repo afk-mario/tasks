@@ -1,9 +1,10 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import routes from '../../routes';
 import './style.css';
 
+// Nav bar with routes
 const Header = () => (
   <header id="header">
     <nav className="wrapper">

@@ -4,6 +4,7 @@ import ChartComponent from '../../components/chart';
 import { filterTasks, getPorcentages } from '../tasks/utils';
 import { filters } from '../filter/filters';
 
+// First chart showing porcentage of completition on tasks depending on the duration
 const mapStateToProps = state => {
   const { tasks } = state;
 
@@ -28,13 +29,9 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {};
-};
-
 const Charts = connect(
   mapStateToProps,
-  mapDispatchToProps,
+  null,
 )(ChartComponent);
 
 export default Charts;

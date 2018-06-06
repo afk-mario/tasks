@@ -4,6 +4,7 @@ import ChartComponent from '../../components/chart';
 import { filterTasks } from '../tasks/utils';
 import { filters } from '../filter/filters';
 
+// Show a pie chart based on the status of a task
 const mapStateToProps = state => {
   const { tasks } = state;
 
@@ -25,13 +26,9 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {};
-};
-
 const Charts = connect(
   mapStateToProps,
-  mapDispatchToProps,
+  null,
 )(ChartComponent);
 
 export default Charts;

@@ -1,8 +1,9 @@
 export const START_TIMER = 'START_TIMER';
+// Use the base timer to start the timer with the task already done time
 export function startTimer(baseTime = 0, pk) {
   return {
     type: START_TIMER,
-    baseTime: baseTime,
+    baseTime,
     now: new Date().getTime(),
     pk,
   };

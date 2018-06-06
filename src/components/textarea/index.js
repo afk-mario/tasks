@@ -4,6 +4,7 @@ import classNames from 'classnames';
 
 import './style.css';
 
+// Generic Text Area with label
 const TextArea = props => {
   const { id, name, label, type } = props;
 

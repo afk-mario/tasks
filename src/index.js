@@ -15,23 +15,26 @@ import App from './containers/app';
 import { loadState, saveState } from './lib/localStorage';
 import registerServiceWorker from './registerServiceWorker';
 
+// Create the history and use the react-routet-redux middleware to be able to dispatch actions to change the route.
 const history = createBrowserHistory();
 const a = routerMiddleware(history);
 const middleware = [a, thunk];
 
+// Load the state from local storage
 const persistedState = loadState();
 const store = createStore(
   AppReducer,
   persistedState,
+  // Use the redux dev tools
   composeWithDevTools(applyMiddleware(...middleware)),
 );
 
+// Save the state on the local storage
 store.subscribe(
   throttle(() => {
-    const { tasks, settings } = store.getState();
+    const { tasks } = store.getState();
     saveState({
       tasks,
-      settings,
     });
   }, 1000),
 );

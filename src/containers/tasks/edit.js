@@ -4,6 +4,7 @@ import { push } from 'react-router-redux';
 import { editTask } from './actions';
 import Form from './form';
 
+// On editing a task, search the task on the redux state and pass it to the form
 const mapStateToProps = (state, props) => {
   const { pk } = props.match.params;
   const { tasks, states } = state || [];
@@ -14,14 +15,13 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, props) => {
-  return {
-    onSubmit: item => {
-      dispatch(editTask(item));
-      dispatch(push('/tasks/'));
-    },
-  };
-};
+// When the form is submitted dispatch the update task action and return to the home route
+const mapDispatchToProps = dispatch => ({
+  onSubmit: item => {
+    dispatch(editTask(item));
+    dispatch(push('/tasks/'));
+  },
+});
 
 const EditTask = connect(
   mapStateToProps,

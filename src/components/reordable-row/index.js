@@ -81,6 +81,7 @@ function idk(connect) {
   };
 }
 
+// Generic reordable row from https://react-dnd.github.io/
 class ReordableRow extends React.Component {
   render() {
     const {
@@ -115,9 +116,9 @@ class ReordableRow extends React.Component {
 }
 
 ReordableRow.propTypes = {
-  id: PropTypes.string.isRequired,
-  index: PropTypes.number.isRequired,
-  moveRow: PropTypes.func.isRequired,
+  id: PropTypes.string,
+  index: PropTypes.number,
+  moveRow: PropTypes.func,
   // Injected by React DnD:
   isDragging: PropTypes.bool.isRequired,
   connectDragSource: PropTypes.func.isRequired,

@@ -73,3 +73,20 @@ export function formatSeconds(input, separator) {
 export function twoDecimals(input) {
   return Math.round(input * 100) / 100;
 }
+
+export function getHoursMinsValue(value, maxHours, maxMinutes) {
+  /* const time = value.split(colon) || [0, 0]; */
+
+  let minutes = parseInt(value, 10);
+  const hours = minutes / 60;
+  minutes %= 60;
+
+  const hoursClamped = clamp(parseInt(hours, 10), 0, maxHours);
+  const minutesClamped =
+    hoursClamped < maxHours ? clamp(parseInt(minutes, 10), 0, maxMinutes) : 0;
+
+  const hoursFmt = hoursClamped.toString().padStart(2, '0');
+  const minutesFmt = minutesClamped.toString().padStart(2, '0');
+
+  return [hoursFmt, minutesFmt];
+}

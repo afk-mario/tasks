@@ -1,14 +1,17 @@
 import loremIpsum from 'lorem-ipsum';
 
+// Helper function to get random int number
 function rndm(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
 
+// helper function to get random float number
 function rndmDecimal(min, max) {
   const number = Math.random() * (max - min) + min;
   return Math.round(number * 100) / 100;
 }
 
+// List of random durations
 const randomDurations = [
   13,
   14,
@@ -26,6 +29,7 @@ const randomDurations = [
   120,
 ];
 
+// List of random titles to construct random names of tasks
 const randomTitleVerb = [
   'Do',
   'Design',
@@ -45,6 +49,7 @@ const randomTitleVerb = [
   'Kiss',
 ];
 
+// list of random subjects to generate random task names
 const randomTitleSubject = [
   'the dog',
   'the plants',
@@ -62,11 +67,13 @@ const randomTitleSubject = [
   'my face',
 ];
 
+// Combine the subject and the verb to generate a random task name
 export const GenRandomTitle = () =>
   `${randomTitleVerb[rndm(randomTitleVerb.length - 1)]} ${
     randomTitleSubject[rndm(randomTitleSubject.length - 1)]
   }`;
 
+// Use Lorem Ipsum to generate descriptions
 export const GenRandomDescription = () =>
   loremIpsum({ count: rndm(3), units: 'paragraphs' });
 

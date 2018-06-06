@@ -1,12 +1,11 @@
 import React from 'react';
 import Select from 'react-select';
+import { withRouter } from 'react-router';
 
 import Input from '../../components/input';
 import TextArea from '../../components/textarea';
 import Time from '../../components/time';
 import spec from './spec';
-
-import { withRouter } from 'react-router';
 
 class Form extends React.Component {
   constructor(props) {
@@ -21,25 +20,24 @@ class Form extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (!nextProps.match.params.pk) return;
     if (nextProps.match.params.pk !== this.props.match.params.pk) {
-      const item = nextProps.item;
+      const { item } = nextProps;
       this.setState(item);
     }
-  }
-
-  handleInputChange(event) {
-    const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
-
-    this.setState({
-      [name]: value,
-    });
   }
 
   onSelectOption(item) {
     const { value } = item;
     this.setState({
       duration: value,
+    });
+  }
+
+  handleInputChange(event) {
+    const { target, name } = event;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+
+    this.setState({
+      [name]: value,
     });
   }
 
@@ -66,8 +64,9 @@ class Form extends React.Component {
     );
   }
 
+  // Read from the spec and set the corresponding input components.
   render() {
-    const options = spec.find(item => item.name === 'duration-option').options;
+    const { options } = spec.find(item => item.name === 'duration-option');
     const duration = spec.find(item => item.name === 'duration');
     const selected =
       options.find(item => item.value === this.state.duration) ||

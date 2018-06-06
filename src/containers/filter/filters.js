@@ -6,6 +6,7 @@ export const FILTER_COMPLETE = 'FILTER_COMPLETE';
 export const FILTER_IDLE = 'FILTER_IDLE';
 export const FILTER_STARTED = 'FILTER_STARTED';
 
+// List of posible filters
 export const filters = [
   {
     name: 'None',

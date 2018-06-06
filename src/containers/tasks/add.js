@@ -5,10 +5,11 @@ import { addTask } from './actions';
 import Form from './form';
 import spec from './spec';
 
+// for a new item, create an empty object based on spec.js
 const mapStateToProps = state => {
   const item = Object.assign(
     {},
-    ...spec.map(({ name, value }) => ({ [name]: value }))
+    ...spec.map(({ name, value }) => ({ [name]: value })),
   );
 
   return {
@@ -16,18 +17,16 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onSubmit: item => {
-      dispatch(addTask(item));
-      dispatch(push('/tasks/'));
-    },
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  onSubmit: item => {
+    dispatch(addTask(item));
+    dispatch(push('/tasks/'));
+  },
+});
 
 const AddTask = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Form);
 
 export default AddTask;

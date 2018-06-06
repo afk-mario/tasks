@@ -35,7 +35,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
     onClick: pk => {
       dispatch(push(`/tasks/edit/${pk}`));
     },
-    onDelete: (pk, name) => {
+    onDelete: pk => {
       if (pk === timerPk) dispatch(clearTimer());
       dispatch(deleteTask(pk));
     },

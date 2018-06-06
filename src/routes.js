@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
 import Tasks from './containers/tasks';
 import AddTasks from './containers/tasks/add';
@@ -6,8 +7,8 @@ import EditTasks from './containers/tasks/edit';
 import Charts from './containers/charts';
 
 import Settings from './containers/settings';
-import { Redirect } from 'react-router-dom';
 
+// List of routes
 const routes = [
   {
     path: '/',

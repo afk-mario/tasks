@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReordableRow from '../reordable-row';
-import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
+import { DragDropContext } from 'react-dnd';
+import ReordableRow from '../reordable-row';
 
-import Row from '../row';
 import ActionButton from '../action-button';
 
 import './style.css';
@@ -24,7 +23,7 @@ class ReordableList extends React.Component {
     if (items.length < 1)
       return (
         <ul className="list">
-          <Row text="-- No Items --" />
+          <ReordableRow text="-- No Items --" />
         </ul>
       );
     return (

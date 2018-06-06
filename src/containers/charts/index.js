@@ -5,16 +5,14 @@ import Chart3 from './chart3';
 
 import './style.css';
 
-const Charts = props => {
-  return (
-    <section className="wrapper charts">
-      <Chart title="% Done" />
-      <div className="pies">
-        <Chart2 title="By duration" />
-        <Chart3 title="By status" />
-      </div>
-    </section>
-  );
-};
+const Charts = () => (
+  <section className="wrapper charts">
+    <Chart title="% Done" />
+    <div className="pies">
+      <Chart2 title="By duration" />
+      <Chart3 title="By status" />
+    </div>
+  </section>
+);
 
 export default Charts;

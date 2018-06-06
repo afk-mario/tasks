@@ -33,3 +33,9 @@
 .action-button i {
   font-style: normal;
 }
+
+@media screen and (max-width: 40em) {
+  .action-button {
+    width: 40px;
+  }
+}

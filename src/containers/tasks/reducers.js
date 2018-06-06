@@ -37,7 +37,7 @@ function tasks(state = [], action) {
       ];
     case DELETE_TASK:
       return state.filter(item => item.pk !== action.pk);
-    case MOVE_TASK:
+    case MOVE_TASK: {
       if (state.length < action.dragIndex - 1) return state;
       if (state.length < action.hoverIndex - 1) return state;
 
@@ -45,6 +45,7 @@ function tasks(state = [], action) {
       return update(state, {
         $splice: [[action.dragIndex, 1], [action.hoverIndex, 0, dragItem]],
       });
+    }
     case CLEAR_TASKS:
       return [];
     case LOAD_TASKS:

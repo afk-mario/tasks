@@ -1,6 +1,7 @@
 import FileSaver from 'file-saver';
 
-export const exportState = ({ items, fileName, objectName }) => {
+// Function to save the stat on a file
+export default ({ items, fileName, objectName }) => {
   console.table(items);
   let obj;
   if (objectName === undefined) {

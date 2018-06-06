@@ -9,6 +9,7 @@ import {
   FILTER_STARTED,
 } from '../filter/filters';
 
+// Function to filter the tasks, never show the active task
 export const filterTasks = (tasks, filter, active) => {
   switch (filter.value) {
     case FILTER_NONE:
@@ -30,14 +31,16 @@ export const filterTasks = (tasks, filter, active) => {
     case FILTER_IDLE:
       return tasks.filter(item => item.status === 'IDL' && item.pk !== active);
     default:
-      break;
+      return tasks;
   }
 };
 
+// Get the porcentage completed of a task
 export const getPorcentage = task => {
   const minutes = task.timeDone / 60;
   const porcentage = twoDecimals((minutes * 100) / task.duration);
   return porcentage;
 };
 
+// Get the porcentages of an array of tasks
 export const getPorcentages = arr => arr.map(item => getPorcentage(item));

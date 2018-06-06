@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+// Generic Input component that includes label
 const Input = props => {
-  const {id, name, label, type, value} = props;
+  const { id, name, label, type, value } = props;
 
   const className = classNames({
     [`input-${type}`]: true,

@@ -1,10 +1,11 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 import { getElapsedTime, formatSeconds } from '../../lib/utils';
 import ActionButton from '../action-button';
-import ReactMarkdown from 'react-markdown';
 
 import './style.css';
 
+// A timer generic component
 class Timer extends React.Component {
   constructor(props) {
     super(props);
@@ -33,15 +34,19 @@ class Timer extends React.Component {
       onDone,
       text,
       task,
+      stopTimer,
+      startTimer,
+      clearTimer,
+      resetTimer,
     } = this.props;
-    const { stopTimer, startTimer, clearTimer, resetTimer } = this.props;
+
     let elapsed = getElapsedTime(baseTime, startedAt, stoppedAt);
 
     if (!task)
       return (
         <section className="timer">
           <div className="title">
-            <span className="info">{`${text} - ${elapsed}`}</span>
+            <span className="info">{`${text}`}</span>
           </div>
         </section>
       );
@@ -49,6 +54,7 @@ class Timer extends React.Component {
     elapsed = task.duration * 60000 - elapsed;
     elapsed = formatSeconds(elapsed, ':');
     const pk = task === undefined ? undefined : task.pk;
+    const description = `# ${task.name} \n ${task.description}`;
 
     return (
       <section className="timer">
@@ -56,7 +62,7 @@ class Timer extends React.Component {
           <span
             className="info"
             onClick={() => titleClick(pk)}
-          >{`${text} - ${elapsed}`}</span>
+          >{`${text}${elapsed}`}</span>
           <ActionButton onClick={() => onDone(task)}>✓</ActionButton>
           <ActionButton
             onClick={
@@ -70,7 +76,7 @@ class Timer extends React.Component {
           <ActionButton onClick={clearTimer}>■</ActionButton>
           <ActionButton onClick={resetTimer}>↺</ActionButton>
         </div>
-        <ReactMarkdown className="description" source={task.description} />
+        <ReactMarkdown className="description" source={description} />
         )
       </section>
     );

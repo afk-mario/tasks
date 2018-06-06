@@ -6,7 +6,7 @@ import Timer from '../timer';
 import Filter from '../filter';
 import './style.css';
 
-export default ({ routes }) => (
+export default () => (
   <section className="tasks wrapper">
     <Timer />
     <Actions />

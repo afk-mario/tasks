@@ -18,19 +18,13 @@
   /* colors */
 
   --white: #ffffff;
-  --black: #000000;
+  --black: #393939;
   --dark-gray: #0c0c0d;
   --medium-gray: #b8b8b8;
   --light-gray: #b2b2b2;
   --light-gray: #f2f2f2;
-  --blue: #0080ff;
-  --light-blue: #98d1cf;
-  --dark-blue: #185869;
   --red: red;
   --pink: #ef008c;
-  --green: #2ab38d;
-  --yellow: #f1b731;
-  --magenta: #7a7e9d;
 
   /* margins */
 
@@ -104,7 +98,7 @@ html {
 
 .page-child {
   min-height: calc(95vh - var(--margin) - var(--double-margin));
-  padding: var(--margin) 0 var(--double-margin) 0;
+  padding: var(--half-margin) 0 var(--margin) 0;
   color: var(--light-gray);
   position: relative;
 }
@@ -113,28 +107,26 @@ h1 {
   color: var(--black);
   width: auto;
   font-family: var(--font-title);
-  font-size: 2em;
+  font-size: 1.8em;
   letter-spacing: 0.1em;
-  text-align: center;
+  text-align: left;
   margin: auto;
-  text-transform: uppercase;
 }
 
 h2 {
-  color: var(--dark-gray);
+  color: var(--black);
   font-family: var(--font-title);
-  font-size: 1.5em;
+  font-size: 1.3em;
   letter-spacing: 0.1em;
+}
+
+p {
+  line-height: 1.3em;
 }
 
 @media screen and (max-width: 40em) {
   body {
     font-size: 0.8em;
-  }
-
-  .page-child {
-    min-height: none;
-    padding: var(--half-margin) 0 0 0;
   }
 
   .wrapper {

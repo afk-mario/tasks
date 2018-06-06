@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { clamp } from '../../lib/utils';
+import { getHoursMinsValue } from '../../lib/utils';
 
 import './style.css';
 
+// Generic input component to input hours and minutes
 class Time extends React.Component {
   constructor(props) {
     super(props);
@@ -16,43 +17,18 @@ class Time extends React.Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.getStringValue = this.getStringValue.bind(this);
     this.getMinutesValue = this.getMinutesValue.bind(this);
   }
 
-  getHoursMinsValue(value, maxHours, maxMinutes) {
-    /* const time = value.split(colon) || [0, 0]; */
-
-    let minutes = parseInt(value, 10);
-    const hours = minutes / 60;
-    minutes = minutes % 60;
-
-    const hoursClamped = clamp(parseInt(hours, 10), 0, maxHours);
-    const minutesClamped =
-      hoursClamped < maxHours ? clamp(parseInt(minutes, 10), 0, maxMinutes) : 0;
-
-    const hoursFmt = hoursClamped.toString().padStart(2, '0');
-    const minutesFmt = minutesClamped.toString().padStart(2, '0');
-
-    return [hoursFmt, minutesFmt];
-  }
-
-  getStringValue() {
-    const { hours, minutes } = this.state;
-    const { colon } = this.props;
-    const hoursFmt = hours.toString().padStart(2, '0');
-    const minutesFmt = minutes.toString().padStart(2, '0');
-    const value = `${hoursFmt}${colon}${minutesFmt}`;
-    return value;
-  }
-
+  // get the minutes value based on hours
   getMinutesValue() {
     const { hours, minutes } = this.state;
     return parseInt(hours, 10) * 60 + parseInt(minutes, 10);
   }
 
+  // depening on the input element changed set the state
   handleChange(event) {
-    const target = event.target;
+    const { target } = event;
     const { name, value } = target;
 
     this.setState(
@@ -74,7 +50,7 @@ class Time extends React.Component {
   render() {
     const { id, name, type, value, colon, maxHours, maxMinutes } = this.props;
 
-    const [hours = 0, minutes = 0] = this.getHoursMinsValue(
+    const [hours = 0, minutes = 0] = getHoursMinsValue(
       value,
       maxHours,
       maxMinutes,
@@ -118,6 +94,7 @@ class Time extends React.Component {
 }
 
 Time.defaultProps = {
+  value: 0,
   maxHours: 24,
   maxMinutes: 59,
   colon: ':',
@@ -126,9 +103,9 @@ Time.defaultProps = {
 Time.propTypes = {
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  maxHours: PropTypes.number.isRequired,
-  maxMinutes: PropTypes.number.isRequired,
-  colon: PropTypes.string.isRequired,
+  maxHours: PropTypes.number,
+  maxMinutes: PropTypes.number,
+  colon: PropTypes.string,
   value: PropTypes.number,
 };
 

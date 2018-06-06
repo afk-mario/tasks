@@ -12,7 +12,7 @@ function mapStateToProps(state) {
   return { items: tasks };
 }
 
-const TaskActions = ({ items, dispatch }) => {
+const TaskActions = ({ dispatch }) => {
   const tasks = [
     {
       name: 'New task',

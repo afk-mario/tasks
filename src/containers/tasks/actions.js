@@ -1,5 +1,6 @@
 import { v4 } from 'uuid';
 
+// Action to create a task with a unique ID
 export const ADD_TASK = 'ADD_TASK';
 export function addTask(item) {
   return {
@@ -11,6 +12,7 @@ export function addTask(item) {
   };
 }
 
+// Delete all the tasks on the state
 export const CLEAR_TASKS = 'CLEAR_TASKS';
 export function clearTasks() {
   return {
@@ -18,6 +20,7 @@ export function clearTasks() {
   };
 }
 
+// Update a task
 export const EDIT_TASK = 'EDIT_TASK';
 export function editTask(item) {
   return {
@@ -26,6 +29,7 @@ export function editTask(item) {
   };
 }
 
+// Duplicate a task
 export const DUPLICATE_TASK = 'DUPLICATE_TASK';
 export function duplicateTask(item) {
   const dup = { ...item, pk: v4() };
@@ -35,6 +39,7 @@ export function duplicateTask(item) {
   };
 }
 
+// Delete a task
 export const DELETE_TASK = 'DELETE_TASK';
 export function deleteTask(pk) {
   return {
@@ -43,6 +48,7 @@ export function deleteTask(pk) {
   };
 }
 
+// Set the state to the array of tasks
 export const LOAD_TASKS = 'LOAD_TASKS';
 export function loadTasks(items) {
   return {
@@ -51,6 +57,7 @@ export function loadTasks(items) {
   };
 }
 
+// Move the task on the array
 export const MOVE_TASK = 'MOVE_TASK';
 export function moveTask(dragIndex, hoverIndex) {
   return {
